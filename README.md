@@ -1,85 +1,133 @@
-Installation
-1. Verify Python Installation
+# 🚀 Python Async Load Tester
 
-Check the installed Python version:
+A lightweight **asynchronous load testing tool** built with Python and `aiohttp`.
+This project helps you measure how well a server performs under concurrent traffic by sending thousands of requests efficiently and reporting clear performance metrics.
 
+---
+
+## 📌 Features
+
+* ⚡ Asynchronous HTTP requests using `aiohttp`
+* 📊 Clear test summary with success, failure, duration, and RPS
+* 🔧 Simple configuration directly in `main.py`
+* 🧪 Ideal for local development and performance testing
+* 🐍 Minimal dependencies
+
+---
+
+## 🛠️ Installation
+
+### 1. Verify Python Installation
+
+Check your Python version:
+
+```bash
 python --version
+```
 
 If Python is not installed, download it from:
+👉 [https://www.python.org/downloads/](https://www.python.org/downloads/)
 
-https://www.python.org/downloads/
+---
 
-2. Clone or Copy the Project
+### 2. Clone or Copy the Project
 
 Copy the project folder to your local machine, for example:
 
+```bash
 load-tester/
+```
 
-Project structure:
+**Project structure:**
 
+```
 load-tester/
 │
 ├── main.py
 ├── README.md
 └── requirements.txt
-3. Install Dependencies
+```
 
-Navigate to the project directory and run:
+---
 
+### 3. Install Dependencies
+
+Navigate to the project directory and install the required packages:
+
+```bash
 python -m pip install -r requirements.txt
+```
 
-Contents of requirements.txt:
+**Contents of `requirements.txt`:**
 
+```
 aiohttp
-Running the Server to Be Tested
+```
 
-Before running the load testing application, ensure that the target server is running.
+---
 
-Example: Python Local HTTP Server
+## 🖥️ Running the Server to Be Tested
 
-Run the following command:
+Before running the load tester, make sure the target server is running.
 
+### Example: Python Local HTTP Server
+
+You can quickly start a local test server with:
+
+```bash
 python -m http.server 8000
+```
 
-This will start a local server on port 8000.
-The endpoint to be tested will be:
+This will start a server on port **8000**.
 
+**Target endpoint:**
+
+```
 http://localhost:8000
+```
 
 If you are using another framework (Flask, FastAPI, etc.), ensure that:
 
-The server is running properly
+* ✅ The server is running properly
+* ✅ The port and endpoint are known
 
-The port and endpoint are known
+---
 
-Test Configuration
+## ⚙️ Test Configuration
 
-Open main.py and configure the following parameters:
+Open `main.py` and configure the following parameters:
 
+```python
 URL = "http://localhost:8000"
 TOTAL_REQUEST = 10000
 CONCURRENT = 50
 TIMEOUT = 5
+```
 
-Parameter description:
+### Parameter Description
 
-URL: target endpoint to be tested
+* **URL**: Target endpoint to be tested
+* **TOTAL_REQUEST**: Total number of requests to send
+* **CONCURRENT**: Number of simultaneous requests
+* **TIMEOUT**: Response timeout in seconds
 
-TOTAL_REQUEST: total number of requests sent
+---
 
-CONCURRENT: number of simultaneous requests
+## ▶️ Running the Load Test
 
-TIMEOUT: response timeout in seconds
+Once the server is running, execute:
 
-Running the Load Test
-
-After the server is running, execute the application:
-
+```bash
 python main.py
-Test Output
+```
 
-Example output:
+---
 
+## 📈 Test Output
+
+### Example Output
+
+```
 ===== LOAD TEST RESULT =====
 Target        : http://localhost:8000
 Total Request : 10000
@@ -87,28 +135,47 @@ Success       : 9850
 Failed        : 150
 Duration      : 32.45 seconds
 RPS           : 308.14
+```
 
-Output description:
+### Output Description
 
-Success: number of requests with HTTP status code 2xx
+* **Success**: Number of requests with HTTP status code `2xx`
+* **Failed**: Requests that failed due to:
 
-Failed: requests that failed due to client errors (4xx), server errors (5xx), timeouts, or connection issues
+  * Client errors (`4xx`)
+  * Server errors (`5xx`)
+  * Timeouts or connection issues
+* **Duration**: Total execution time of the test
+* **RPS (Requests Per Second)**: Average number of requests processed per second
 
-Duration: total execution time of the test
+---
 
-RPS (Requests Per Second): average number of requests processed per second
+## 🎯 Testing Objectives
 
-Testing Objectives
+This load testing tool is designed to:
 
-This load testing process is intended to:
+* Measure server performance under concurrent load
+* Identify system capacity and bottlenecks
+* Observe server stability during high traffic conditions
 
-Measure server performance under concurrent load
+---
 
-Identify system capacity limits
+## 🔐 Security & Ethical Notice
 
-Observe server stability during high traffic conditions
+⚠️ **Important**
 
-Security and Ethical Notice
+This application must be used **only** for testing:
 
-This application must be used only for testing systems owned by the user or systems with explicit authorization.
+* Systems you own, **or**
+* Systems for which you have **explicit authorization**
+
 Using this tool against external systems without permission may violate applicable laws and regulations.
+
+---
+
+## 📄 License
+
+This project is provided for educational and testing purposes.
+Feel free to modify and extend it to suit your needs.
+
+Happy testing! 🚀
